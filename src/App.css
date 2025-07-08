@@ -1,0 +1,292 @@
+/* Reset and base styles */
+:root {
+  /* Colors */
+  --white: #ffffff;
+  --dark-gray: #1a1a1a;
+  --royal-blue: #0c3466;
+  --royal-blue-dark: #092850;
+  --royal-blue-light: #1a4c8c;
+  --gold: #D4AF37;
+  --gold-light: #E5C158;
+  --purple: #6A1B9A;
+  --purple-dark: #4A1269;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.4s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', 'Poppins', sans-serif;
+  line-height: 1.8;
+  color: var(--dark-gray);
+  overflow-x: hidden;
+  background-color: var(--white);
+  font-weight: 500;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+  color: #1a1a1a;
+}
+
+h1 {
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+}
+
+h2 {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+}
+
+h3 {
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+}
+
+p {
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  color: #1a1a1a;
+  font-weight: 500;
+  line-height: 1.8;
+}
+
+/* Global utility classes */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+.section-container {
+  padding: 4rem 0;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.section-container.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Section styling with alternating backgrounds */
+section:nth-of-type(odd) {
+  background-color: #fff;
+}
+
+section:nth-of-type(even) {
+  background: linear-gradient(135deg, #f9f7f0 0%, rgba(212, 175, 55, 0.08) 100%);
+  position: relative;
+}
+
+section:nth-of-type(even)::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 800px;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0), var(--gold), rgba(212, 175, 55, 0));
+}
+
+section:nth-of-type(even)::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  right: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 800px;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0), var(--gold), rgba(212, 175, 55, 0));
+}
+
+/* Section title with gold accents */
+.section-title {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.8rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--gold);
+}
+
+.text-center .section-title::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  font-weight: 500;
+  font-size: 1rem;
+  text-align: center;
+  text-decoration: none;
+  color: var(--white);
+  background-color: var(--royal-blue);
+  border: 2px solid var(--royal-blue);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn:hover {
+  background-color: var(--royal-blue-light);
+  border-color: var(--royal-blue-light);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--royal-blue);
+}
+
+.btn-outline:hover {
+  background-color: var(--royal-blue);
+  color: var(--white);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+  border-color: var(--gold);
+  color: var(--dark-gray);
+}
+
+.btn-gold:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--dark-gray);
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
+/* Global animation classes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Font Awesome icons styles */
+.fas, .fab, .far, .fa {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  text-align: center;
+  margin-right: 0.5rem;
+  transition: transform var(--transition-fast);
+}
+
+/* Card styles with subtle gold accents */
+.card {
+  background: var(--white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all var(--transition-normal);
+  position: relative;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold-light), var(--gold), var(--gold-light));
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Gold accent highlights */
+.gold-accent {
+  color: var(--gold);
+}
+
+.gold-divider {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(212, 175, 55, 0), var(--gold), rgba(212, 175, 55, 0));
+  margin: 2rem 0;
+  width: 100%;
+}
+
+.gold-border-left {
+  border-left: 3px solid var(--gold);
+  padding-left: 15px;
+}
+
+.text-with-gold {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 8px;
+}
+
+.text-with-gold::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold-light), var(--gold), var(--gold-light));
+}

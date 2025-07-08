@@ -1,0 +1,115 @@
+.home-page {
+  scroll-behavior: smooth;
+  background-color: var(--white);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Apply fade-in animations to sections when they become visible */
+.section-container:not(.testimonials-section) {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-container.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Section dividers and accents */
+.section-container:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 800px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  border-radius: 3px;
+}
+
+/* Alternating background colors for sections */
+.section-container:nth-child(even):not(.services-section){
+  background-color: var(--off-white);
+}
+
+/* Section headings styling */
+.section-heading {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.section-heading h2 {
+  margin-bottom: 1.2rem;
+  color: var(--dark-gray);
+  font-weight: 700;
+}
+
+.section-heading p {
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
+  color: #333333;
+  font-size: 1.1rem;
+}
+
+/* Offset for fixed header on scroll */
+#about, #team, #contact, #testimonials {
+  scroll-margin-top: 80px;
+}
+
+/* Section padding */
+.section-container {
+  padding: 4rem 0;
+}
+
+/* Navigation to other sites */
+.main-site-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 4rem 0;
+  background: linear-gradient(to bottom, var(--white), var(--off-white));
+}
+
+.site-nav-button {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.site-nav-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.avron-button {
+  background-color: #2c3e50;
+  color: white;
+}
+
+.avron-button:hover {
+  background-color: #34495e;
+}
+
+.realm-button {
+  background-color: #8e44ad;
+  color: white;
+}
+
+.realm-button:hover {
+  background-color: #9b59b6;
+} 

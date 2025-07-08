@@ -1,0 +1,422 @@
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: var(--royal-blue);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(12, 52, 102, 0.2);
+  z-index: 1000;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  height: 100px;
+  border-bottom: 1px solid var(--gold);
+}
+
+.header-scrolled {
+  height: 85px;
+  background: var(--royal-blue);
+  box-shadow: 0 4px 20px rgba(12, 52, 102, 0.25);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  height: 100%;
+}
+
+.logo {
+  height: 90px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1001;
+  transition: all var(--transition-normal);
+  text-decoration: none;
+  margin-left: -40px;
+}
+
+.logo img {
+  height: auto;
+  max-height: 110px;
+  width: auto;
+  transform: translateY(5px);
+  transform-origin: center;
+  transition: all var(--transition-normal);
+}
+
+.logo:not(.logo-shrink) img {
+  margin-top: 40px;
+}
+
+/* Shrink logo when scrolled */
+.logo.logo-shrink img {
+  max-height: 60px;
+  transform: translateY(0);
+}
+
+.logo a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.text-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+  position: relative;
+}
+
+.text-logo-hired,
+.text-logo-next,
+.text-logo-recruitment {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              color 0.3s ease;
+}
+
+.text-logo-hired {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.text-logo-next {
+  color: #FF4E16;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.text-logo-recruitment {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-left: 1rem;
+  letter-spacing: 1px;
+}
+
+/* Remove the scale down effect for the logo */
+.nav-menu {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transition: right 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nav-menu ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  align-items: center;
+}
+
+.nav-menu li {
+  margin-left: 2.5rem;
+  position: relative;
+}
+
+.nav-menu a, .nav-button {
+  text-decoration: none;
+  color: var(--white);
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  padding: 0.5rem 0;
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  padding: 0.5rem 0;
+  font: inherit;
+  cursor: pointer;
+  color: var(--white);
+  text-align: left;
+}
+
+.nav-menu a:hover, .nav-button:hover {
+  color: var(--gold);
+}
+
+.nav-menu a::before, .nav-button::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--gold);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nav-menu a:hover::before, .nav-button:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.header-cta {
+  margin-left: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-cta .btn {
+  padding: 0.6rem 1.5rem;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+  color: var(--dark-gray);
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.25);
+  border: 2px solid var(--gold);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  text-align: center;
+}
+
+.header-cta .btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+  transform: translateX(-100%);
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.header-cta .btn:hover {
+  background: transparent;
+  color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(212, 175, 55, 0.35);
+}
+
+.header-cta .btn:hover::before {
+  transform: translateX(100%);
+}
+
+.mobile-menu-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+}
+
+.mobile-menu-btn span {
+  height: 2px;
+  width: 100%;
+  background-color: var(--white);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border-radius: 2px;
+}
+
+/* Mobile menu animation */
+.mobile-menu-btn.active span:first-child {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.mobile-menu-btn.active span:last-child {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+@media (max-width: 992px) {
+  .header {
+    height: 60px;
+    padding: 0 15px;
+  }
+  
+  .logo {
+    height: 60px;
+  }
+  
+  .logo img {
+    max-height: 75px;
+  }
+  
+  .logo.logo-shrink img {
+    max-height: 45px;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+    z-index: 1001;
+    padding: 10px;
+    margin-right: -10px;
+  }
+
+  .mobile-menu-btn span {
+    height: 2px;
+    width: 24px;
+    background-color: var(--dark-gray);
+    transition: all 0.3s ease;
+  }
+  
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 80px 25px 25px;
+    transition: all 0.3s ease;
+    overflow-y: auto;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .nav-menu.active {
+    right: 0;
+  }
+  
+  .nav-menu ul {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    gap: 10px;
+  }
+  
+  .nav-menu li {
+    margin: 0;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+  
+  .nav-menu.active li {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: calc(0.05s * var(--item-index));
+  }
+  
+  .nav-menu li a {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    color: var(--dark-gray);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .nav-menu li a:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  .header-cta {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+  }
+
+  .nav-menu.active .header-cta {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+  }
+
+  .header-cta .btn {
+    width: 100%;
+    max-width: 250px;
+    justify-content: center;
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+
+  /* Mobile menu button animation */
+  .mobile-menu-btn.active span:first-child {
+    transform: rotate(45deg) translate(5px, 5px);
+    background-color: var(--dark-gray);
+  }
+
+  .mobile-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+
+  .mobile-menu-btn.active span:last-child {
+    transform: rotate(-45deg) translate(5px, -5px);
+    background-color: var(--dark-gray);
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    height: 55px;
+    padding: 0 12px;
+  }
+
+  .logo {
+    height: 55px;
+  }
+
+  .text-logo-hired,
+  .text-logo-next {
+    font-size: 1.3rem;
+  }
+  
+  .text-logo-recruitment {
+    display: none;
+  }
+  
+  .nav-menu {
+    padding: 70px 20px 20px;
+  }
+
+  .nav-menu li a {
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  .header-cta .btn {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+  }
+
+  .mobile-menu-btn {
+    padding: 8px;
+    margin-right: -8px;
+  }
+
+  .mobile-menu-btn span {
+    width: 22px;
+  }
+} 

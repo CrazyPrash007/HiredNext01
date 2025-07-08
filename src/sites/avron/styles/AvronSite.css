@@ -1,0 +1,35 @@
+.avron-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f9fa;
+  padding: 2rem;
+}
+
+.avron-content {
+  text-align: center;
+  max-width: 600px;
+  padding: 3rem;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.avron-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.avron-content p {
+  font-size: 1.5rem;
+  color: #34495e;
+  margin-bottom: 2rem;
+}
+
+.avron-placeholder-text {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+  line-height: 1.6;
+} 
