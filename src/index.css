@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  font-family: 'Montserrat', 'Poppins', 'Segoe UI', 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #1a1a1a;
+  font-weight: 500;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Color Palette */
+:root {
+  /* Primary Colors */
+  --royal-blue: #0c3466;
+  --gold: #d4af37;
+  --emerald-green: #046a38;
+  --electric-violet: #4b0082;
+  
+  /* Neutral Colors */
+  --white: #ffffff;
+  --off-white: #f9f9fb;
+  --light-gray: #f3f4f6;
+  --medium-gray: #8a8d98;
+  --dark-gray: #1a1a1a;
+  --black: #171923;
+  
+  /* Accent Variants */
+  --royal-blue-light: #1a4b8f;
+  --gold-light: #e5c76b;
+  --emerald-green-light: #26805a;
+  --electric-violet-light: #6c2aa3;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(13, 12, 34, 0.05);
+  --shadow-md: 0 4px 8px rgba(13, 12, 34, 0.08);
+  --shadow-lg: 0 12px 24px rgba(13, 12, 34, 0.12);
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* Import Premium Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* Import Font Awesome for icons */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

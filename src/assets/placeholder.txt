@@ -1,0 +1,8 @@
+This directory contains images and other assets for the HiredNext website.
+
+For production, replace these placeholder images with actual images:
+
+1. hero-image.jpg - A professional image showing people in a business setting
+2. team1.jpg to team4.jpg - Professional headshots of team members
+3. service1.jpg and service2.jpg - Images representing the Capital and Ascend services
+4. service1-detailed.jpg and service2-detailed.jpg - Larger versions of the service images for the Services page 
