@@ -19,13 +19,7 @@ create policy "Enable read access for all users"
 create policy "Enable insert for newsletter subscriptions"
     on public.hirednext_newsletter_subscriptions
     for insert
-    with check (
-        not exists (
-            select 1 
-            from public.hirednext_newsletter_subscriptions 
-            where email = new.email
-        )
-    );
+    with check (true);
 
 -- Create index on email for faster lookups
 create index newsletter_subscriptions_email_idx on public.hirednext_newsletter_subscriptions (email);
