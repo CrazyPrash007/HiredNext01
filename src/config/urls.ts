@@ -3,11 +3,11 @@ const isDevelopment = process.env.NODE_ENV === 'development';
 // Base URLs for different environments
 const config = {
   development: {
-    realmUrl: 'https://realm-lac.vercel.app',  // Updated to point to the external Realm site
+    realmUrl: 'https://realm.hirednext.co/',  // Updated to point to the external Realm site
   },
   production: {
     // Update these URLs when deploying
-    realmUrl: 'https://realm-lac.vercel.app',  // Updated to point to the external Realm site
+    realmUrl: 'https://realm.hirednext.co/',  // Updated to point to the external Realm site
   },
 };
 
