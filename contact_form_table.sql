@@ -21,6 +21,31 @@ create table public.hirednext_submission_limits (
     last_submission_at timestamp with time zone default timezone('utc'::text, now()) not null
 );
 
+-- Create function to check submission limits
+create or replace function check_submission_limits(p_email text, p_ip_address text)
+returns boolean
+language plpgsql
+security definer
+as $$
+declare
+    hourly_limit constant int := 5; -- Maximum 5 submissions per hour
+    v_count int;
+begin
+    -- Check hourly limit
+    select count(*)
+    into v_count
+    from public.hirednext_contact_submissions
+    where (email = p_email or ip_address = p_ip_address)
+    and created_at > current_timestamp - interval '1 hour';
+
+    if v_count >= hourly_limit then
+        return false;
+    end if;
+
+    return true;
+end;
+$$; 
+
 -- Enable Row Level Security (RLS)
 alter table public.hirednext_contact_submissions enable row level security;
 alter table public.hirednext_submission_limits enable row level security;
@@ -61,27 +86,3 @@ create index submission_limits_ip_idx on public.hirednext_submission_limits (ip_
 comment on table public.hirednext_contact_submissions is 'Stores contact form submissions from the HiredNext website';
 comment on table public.hirednext_submission_limits is 'Tracks submission limits per email and IP address';
 
--- Create function to check submission limits
-create or replace function check_submission_limits(p_email text, p_ip_address text)
-returns boolean
-language plpgsql
-security definer
-as $$
-declare
-    hourly_limit constant int := 5; -- Maximum 5 submissions per hour
-    v_count int;
-begin
-    -- Check hourly limit
-    select count(*)
-    into v_count
-    from public.hirednext_contact_submissions
-    where (email = p_email or ip_address = p_ip_address)
-    and created_at > current_timestamp - interval '1 hour';
-
-    if v_count >= hourly_limit then
-        return false;
-    end if;
-
-    return true;
-end;
-$$; 
