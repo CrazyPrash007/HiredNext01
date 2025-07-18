@@ -62,6 +62,51 @@ const testimonials = [
     text: "HiredNext founder Taru Shikha is one of the business world's great person to work with. she completely understand your need for talent. Her expert evaluation before presenting a suitable candidate is so through it just makes hirer's life easier to identify suitable talent for a organisation.",
     photo: pinkyImage,
     linkedin: "https://www.linkedin.com/in/pinky-kotecha-0b615157"
+  },
+  {
+    id: 7,
+    name: "Shefi Gupta",
+    position: "Senior Revenue Manager",
+    company: "Marriott International",
+    text: "HiredNext helped me land a Senior Revenue Manager role at Marriott International, a career move I hadn't imagined! Their process was smooth, responsive, and truly exceptional. Highly recommended!",
+    photo: null,
+    linkedin: "https://www.linkedin.com/in/shefigupta/"
+  },
+  {
+    id: 8,
+    name: "Shripad Tokekar",
+    position: "Assistant Manager Finance",
+    company: "PDS Limited",
+    text: "HiredNext was incredibly cooperative and responsive throughout my job search. Thanks to them, I secured an Assistant Manager Finance role at PDS Limited, Mumbai. Great experience!",
+    photo: null,
+    linkedin: null
+  },
+  {
+    id: 9,
+    name: "Ranjan",
+    position: "Merchandising Manager",
+    company: "PDS Group",
+    text: "Thanks to HiredNext's constant support and guidance, I landed my dream role as Merchandising Manager at PDS Group, Gurgaon. Their structured and responsive approach truly made the difference!",
+    photo: null,
+    linkedin: null
+  },
+  {
+    id: 10,
+    name: "Aman Yadav",
+    position: "Compliance Auditor",
+    company: "PDS",
+    text: "HiredNext understood my goals perfectly and helped me land a Compliance Auditor role at PDS, Gurgaon. Their support was seamless, and the team was truly cooperative throughout!",
+    photo: null,
+    linkedin: null
+  },
+  {
+    id: 11,
+    name: "Shyamlee",
+    position: "Business Head",
+    company: "Buana Samudra Lestari",
+    text: "HiredNext made my transition to Business Head at Buana Samudra Lestari, Jakarta, completely smooth and hassle-free. Their clarity, speed, and commitment to the perfect fit were unmatched!",
+    photo: null,
+    linkedin: null
   }
 ];
 
@@ -135,6 +180,20 @@ const TestimonialsSection: React.FC = () => {
     setExpandedIndex(null);
   };
 
+  // Function to render profile image or letter avatar
+  const renderProfileImage = (testimonial: typeof testimonials[0]) => {
+    if (testimonial.photo) {
+      return <img src={testimonial.photo} alt={testimonial.name} />;
+    } else {
+      const firstLetter = testimonial.name.charAt(0);
+      return (
+        <div className="letter-avatar">
+          {firstLetter}
+        </div>
+      );
+    }
+  };
+
   return (
     <section id="testimonials" className="testimonials-section">
       <div className="section-header">
@@ -166,23 +225,25 @@ const TestimonialsSection: React.FC = () => {
                 <div className="testimonial-author">
                   <div className="author-profile">
                     <div className="author-image">
-                      <img src={testimonial.photo} alt={testimonial.name} />
+                      {renderProfileImage(testimonial)}
                     </div>
                     <div className="author-info">
                       <h4>{testimonial.name}</h4>
                       <p>{testimonial.position}, {testimonial.company}</p>
                     </div>
                   </div>
-                  <a 
-                    href={testimonial.linkedin} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="linkedin-link"
-                    aria-label={`Connect with ${testimonial.name} on LinkedIn`}
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <i className="fab fa-linkedin"></i>
-                  </a>
+                  {testimonial.linkedin && (
+                    <a 
+                      href={testimonial.linkedin} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="linkedin-link"
+                      aria-label={`Connect with ${testimonial.name} on LinkedIn`}
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <i className="fab fa-linkedin"></i>
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

@@ -176,6 +176,19 @@
   object-position: center;
 }
 
+.letter-avatar {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--royal-blue);
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
 .author-info {
   flex-grow: 1;
 }
