@@ -130,14 +130,14 @@ const TestimonialsSection: React.FC = () => {
     
     cloneItems();
     
-    // Set animation duration based on content length
-    scrollContainer.style.animationDuration = `${testimonials.length * 10}s`;
+    // Set animation duration based on content length - reduced for faster scrolling
+    scrollContainer.style.animationDuration = `${testimonials.length * 5}s`; // Changed from 10s to 5s
     
     // Reset animation when it completes
     const handleAnimationEnd = () => {
       scrollContainer.style.animation = 'none';
       void scrollContainer.offsetWidth; // Trigger reflow
-      scrollContainer.style.animation = `scrollLeft ${testimonials.length * 10}s linear infinite`;
+      scrollContainer.style.animation = `scrollLeft ${testimonials.length * 5}s linear infinite`; // Changed from 10s to 5s
       
       // If it was paused before, keep it paused
       if (isPaused) {

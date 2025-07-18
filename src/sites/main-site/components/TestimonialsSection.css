@@ -54,7 +54,7 @@
 .testimonials-container {
   display: flex;
   gap: 25px;
-  animation: scrollLeft 30s linear infinite;
+  animation: scrollLeft 15s linear infinite; /* Changed from 30s to 15s for faster scrolling */
   padding: 0 20px;
   width: fit-content;
   margin: 0 auto;
