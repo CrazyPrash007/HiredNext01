@@ -29,13 +29,28 @@ const ScrollToAnchor = () => {
   return null;
 };
 
-// Redirect component to send users to external Realm site
-const ExternalRedirect: React.FC<{ to: string }> = ({ to }) => {
+// Embed component to display Realm within an iframe while keeping URL
+const RealmEmbed: React.FC = () => {
   useEffect(() => {
-    // Use replace so the back button doesn't return to the redirecting route
-    window.location.replace(to);
-  }, [to]);
-  return null;
+    // Prevent double scrollbars
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, []);
+  
+  return (
+    <div style={{ width: '100%', height: '100vh' }}>
+      <iframe
+        title="HiredNext Realm"
+        src={getRealmUrl()}
+        style={{ border: 'none', width: '100%', height: '100%' }}
+        allow="fullscreen; clipboard-read; clipboard-write"
+        referrerPolicy="no-referrer-when-downgrade"
+      />
+    </div>
+  );
 };
 
 // MainSite component to wrap the original site content
@@ -115,8 +130,8 @@ function App() {
       <div className="App">
         <ScrollToAnchor />
         <Routes>
-          {/* Redirect /realm to the external Realm site */}
-          <Route path="/realm" element={<ExternalRedirect to={getRealmUrl()} />} />
+          {/* Show the Realm site at /realm without changing the URL */}
+          <Route path="/realm" element={<RealmEmbed />} />
           <Route path="/*" element={<MainSite />} />
         </Routes>
       </div>
