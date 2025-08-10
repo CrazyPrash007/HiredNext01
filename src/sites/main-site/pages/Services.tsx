@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { getRealmUrl } from '../../../config/urls';
+//import { getRealmUrl } from '../../../config/urls';
 import './Services.css';
 
 // Import images with type assertions
@@ -163,7 +163,8 @@ const Services: React.FC = () => {
   const handleServiceClick = useCallback((serviceId: string): void => {
     switch (serviceId) {
       case 'realm':
-        window.open(getRealmUrl(), '_blank', 'noopener,noreferrer');
+        // Keep URL on hirednext.co by navigating to the embedded route
+        navigate('/realm');
         break;
       case 'avron':
         navigate('/avron');
