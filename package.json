@@ -24,11 +24,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start:realm": "cd Realm && npm run dev",
-    "dev": "concurrently \"npm start\" \"npm run start:realm\"",
+    "dev": "concurrently \"npm start\"",
     "build": "react-scripts build",
-    "build:realm": "cd Realm && npm run build",
-    "build:all": "npm run build && npm run build:realm",
+    "build:all": "npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

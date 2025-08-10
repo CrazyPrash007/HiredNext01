@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "rewrites": [
+    { "source": "/realm", "destination": "https://realm.hirednext.co/" },
+    { "source": "/realm/:path*", "destination": "https://realm.hirednext.co/:path*" }
+  ]
+}

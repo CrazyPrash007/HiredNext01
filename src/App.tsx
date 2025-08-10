@@ -5,6 +5,7 @@ import Footer from './sites/main-site/components/Footer';
 import Home from './sites/main-site/pages/Home';
 import Services from './sites/main-site/pages/Services';
 import './App.css';
+import { getRealmUrl } from './config/urls';
 
 // Helper component to handle scrolling to anchors
 const ScrollToAnchor = () => {
@@ -25,6 +26,15 @@ const ScrollToAnchor = () => {
     }
   }, [location.hash]);
   
+  return null;
+};
+
+// Redirect component to send users to external Realm site
+const ExternalRedirect: React.FC<{ to: string }> = ({ to }) => {
+  useEffect(() => {
+    // Use replace so the back button doesn't return to the redirecting route
+    window.location.replace(to);
+  }, [to]);
   return null;
 };
 
@@ -105,6 +115,8 @@ function App() {
       <div className="App">
         <ScrollToAnchor />
         <Routes>
+          {/* Redirect /realm to the external Realm site */}
+          <Route path="/realm" element={<ExternalRedirect to={getRealmUrl()} />} />
           <Route path="/*" element={<MainSite />} />
         </Routes>
       </div>
